@@ -676,7 +676,7 @@ export default function App() {
               {/* Main headline */}
               <h1 className="font-display text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-tight text-gray-900 mb-4">
                 Do You Dream of Becoming{' '}
-                <span className="typewriter-cursor text-gradient-rose font-extrabold block mt-1 min-h-[1.3em]">
+                <span className="typewriter-cursor text-gradient-rose font-extrabold block mt-1 min-h-[3.2em] sm:min-h-[2.4em] lg:min-h-[2.4em]">
                   {dynamicText}
                 </span>
               </h1>
