@@ -421,6 +421,8 @@ export default function App() {
     'https://i.ibb.co/1tr5rxPm/IMG-5655.jpg',
     'https://i.ibb.co/twSYBCxw/IMG-5506.jpg',
     'https://i.ibb.co/RG20rwPr/IMG-8877.jpg',
+    'https://i.ibb.co/nMsCSKNn/IMG-1831.jpg',
+    'https://i.ibb.co/DNhXLvn/IMG-2684.jpg',
   ]
 
   const courses = [
@@ -1067,7 +1069,10 @@ export default function App() {
           <span className="font-display font-bold text-white text-lg">Four Sisters Makeup Academy</span>
         </div>
         <p className="text-xs">AB Rd, LIG Square, Anoop Nagar, Indore, MP 452011 · +91 7024 824 574</p>
-        <p className="text-xs mt-2 text-gray-600">© {new Date().getFullYear()} Four Sisters Makeup Academy. All rights reserved.</p>
+        <p className="text-xs mt-2 text-gray-600 flex items-center justify-center gap-4">
+          <span>© {new Date().getFullYear()} Four Sisters Makeup Academy. All rights reserved.</span>
+          <a href="/privacy.html" className="underline hover:text-white transition-colors">Privacy Policy</a>
+        </p>
       </footer>
 
       {/* ── WHATSAPP FLOAT BUTTON ─────────────────────── */}
