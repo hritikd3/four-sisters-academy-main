@@ -147,6 +147,12 @@ function EnquiryForm({ variant = 'hero' }) {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: formData.toString()
       })
+
+      // Google Ads Conversion for Lead
+      if (window.gtag) {
+        window.gtag('event', 'conversion', { 'send_to': 'AW-18111723754/lead' });
+      }
+
       setSubmitted(true)
     } catch (error) {
       setSubmitted(true) // Still show success to user
@@ -269,6 +275,12 @@ function MasterclassModal({ onClose }) {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: formData.toString()
       })
+
+      // Google Ads Conversion for Masterclass Registration
+      if (window.gtag) {
+        window.gtag('event', 'conversion', { 'send_to': 'AW-18111723754/masterclass_registration' });
+      }
+
       setSubmitted(true)
     } catch (error) {
       setSubmitted(true)
