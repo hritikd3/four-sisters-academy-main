@@ -150,12 +150,17 @@ function EnquiryForm({ variant = 'hero' }) {
 
       // Google Ads Conversion for Lead
       if (window.gtag) {
-        window.gtag('event', 'conversion', { 'send_to': 'AW-18111723754/lead' });
+        window.gtag('event', 'conversion', {
+          'send_to': 'AW-18111723754/swL_CMjG3aAcEOrxq7xD',
+          'value': 1.0,
+          'currency': 'INR'
+        });
       }
 
       setSubmitted(true)
     } catch (error) {
-      setSubmitted(true) // Still show success to user
+      console.error('Submission error:', error)
+      alert("Something went wrong while submitting your lead. Please try again or contact us directly on WhatsApp.")
     } finally {
       setLoading(false)
     }
@@ -276,17 +281,23 @@ function MasterclassModal({ onClose }) {
         body: formData.toString()
       })
 
-      // Google Ads Conversion for Masterclass Registration
+      // Google Ads Conversion for Lead (Masterclass)
       if (window.gtag) {
-        window.gtag('event', 'conversion', { 'send_to': 'AW-18111723754/masterclass_registration' });
+        window.gtag('event', 'conversion', {
+          'send_to': 'AW-18111723754/swL_CMjG3aAcEOrxq7xD',
+          'value': 1.0,
+          'currency': 'INR'
+        });
       }
 
       setSubmitted(true)
     } catch (error) {
-      setSubmitted(true)
+      console.error('Submission error:', error)
+      alert("Something went wrong while submitting your lead. Please try again or contact us directly on WhatsApp.")
     } finally {
       setLoading(false)
     }
+
   }
 
   // Close on backdrop click
