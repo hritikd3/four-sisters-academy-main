@@ -631,17 +631,13 @@ export default function App() {
       {/* ── STICKY HEADER ────────────────────────────── */}
       <header className={`fixed left-0 right-0 z-50 transition-all duration-300 ${bannerVisible ? 'top-[88px] sm:top-[40px]' : 'top-0'} ${headerScrolled ? 'shadow-lg bg-white/95 backdrop-blur-md py-2' : 'bg-transparent py-4'}`}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            {/* <span className="text-2xl">👯‍♀️</span> */}
-            <div>
-              <div className="font-display font-bold text-2xl leading-tight text-rose-700">
-                Four Sisters
-              </div>
-              <div className="text-sm text-gray-500 leading-tight font-medium tracking-wider uppercase">
-                Makeup Academy
-              </div>
-            </div>
-          </div>
+          <a href="/" className="flex items-center">
+            <img
+              src="/logo.png"
+              alt="Four Sisters Salon & Academy"
+              className="h-12 md:h-16 w-auto object-contain transition-transform duration-300 hover:scale-105"
+            />
+          </a>
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
             <a href="#courses" className="hover:text-rose-600 transition-colors">Courses</a>
             <a href="#gallery" className="hover:text-rose-600 transition-colors">Gallery</a>
