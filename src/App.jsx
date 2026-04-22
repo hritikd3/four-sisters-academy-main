@@ -1,5 +1,17 @@
 import { useState, useEffect, useRef } from 'react'
 
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwABol6_OifSqhJ2HvW0lW3L1V3oLb0AzzCQh8gro4HIZr1c_cIzP5sfMawvgkQeOAA/exec'
+
+const getIP = async () => {
+  try {
+    const res = await fetch('https://api.ipify.org?format=json')
+    const data = await res.json()
+    return data.ip
+  } catch (e) {
+    return 'Unknown'
+  }
+}
+
 // ─── Typewriter Hook ───────────────────────────────────────────────────────────
 function useTypewriter(phrases, typingSpeed = 80, pauseTime = 2000, deletingSpeed = 40) {
   const [displayed, setDisplayed] = useState('')
@@ -115,13 +127,32 @@ function EnquiryForm({ variant = 'hero' }) {
 
   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
+
+    try {
+      // Fetch IP with a 1-second timeout so it doesn't block submission
+      const ipPromise = getIP()
+      const timeoutPromise = new Promise(resolve => setTimeout(() => resolve('Timeout'), 1000))
+      const ip = await Promise.race([ipPromise, timeoutPromise])
+
+      const formData = new URLSearchParams()
+      Object.entries(form).forEach(([key, val]) => formData.append(key, val))
+      formData.append('ip', ip)
+
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData.toString()
+      })
       setSubmitted(true)
-    }, 1200)
+    } catch (error) {
+      setSubmitted(true) // Still show success to user
+    } finally {
+      setLoading(false)
+    }
   }
 
   if (submitted) {
@@ -218,10 +249,32 @@ function MasterclassModal({ onClose }) {
 
   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
     setLoading(true)
-    setTimeout(() => { setLoading(false); setSubmitted(true) }, 1200)
+
+    try {
+      const ipPromise = getIP()
+      const timeoutPromise = new Promise(resolve => setTimeout(() => resolve('Timeout'), 1000))
+      const ip = await Promise.race([ipPromise, timeoutPromise])
+
+      const formData = new URLSearchParams()
+      Object.entries(form).forEach(([key, val]) => formData.append(key, val))
+      formData.append('course', 'Masterclass')
+      formData.append('ip', ip)
+
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData.toString()
+      })
+      setSubmitted(true)
+    } catch (error) {
+      setSubmitted(true)
+    } finally {
+      setLoading(false)
+    }
   }
 
   // Close on backdrop click
