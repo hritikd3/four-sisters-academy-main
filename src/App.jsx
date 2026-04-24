@@ -171,7 +171,7 @@ function EnquiryForm({ variant = 'hero' }) {
       <div className="text-center py-8">
         <div className="text-5xl mb-4">🎉</div>
         <h3 className="text-2xl font-bold text-green-600 mb-2">Thank You!</h3>
-        <p className="text-gray-600">We'll call you within 2 hours for your <strong>FREE counselling session!</strong></p>
+        <p className="text-gray-600">We'll call you within 2 hours for your <strong>FREE Demo Class</strong></p>
         <p className="text-sm text-gray-500 mt-2">Check WhatsApp for confirmation.</p>
       </div>
     )
@@ -245,7 +245,7 @@ function EnquiryForm({ variant = 'hero' }) {
             </svg>
             Submitting...
           </span>
-        ) : '🎓 Book FREE Counselling Session →'}
+        ) : '🎓 Book FREE Demo Class →'}
       </button>
       <p className="text-xs text-center text-gray-400">100% Free • No Spam • We respect your privacy</p>
     </form>
@@ -475,11 +475,10 @@ export default function App() {
   const [masterclassOpen, setMasterclassOpen] = useState(false)
 
   const typewriterPhrases = [
-    'a Professional Makeup Artist?',
-    'a Certified Bridal Makeup Expert?',
-    'your own Beauty Salon Owner?',
-    'a Nail Art Specialist?',
-    'financially independent & successful?',
+    'Earn ₹30,000+ per month as a Makeup Artist',
+    'Get Certified & Work with Real Clients',
+    'Learn from Industry Experts in Indore',
+    'Free Demo Class + Placement Support',
   ]
   const dynamicText = useTypewriter(typewriterPhrases, 70, 2200, 35)
 
@@ -598,7 +597,7 @@ export default function App() {
   ]
 
   const benefits = [
-    { icon: '🆓', title: 'FREE Counselling', desc: 'Talk to our expert before enrolling — zero pressure' },
+    { icon: '🆓', title: 'FREE Demo Class', desc: 'Talk to our expert before enrolling — zero pressure' },
     { icon: '🎪', title: 'FREE Workshop', desc: 'Attend a live demo class before committing to the course' },
     { icon: '📜', title: 'Certified Training', desc: 'Industry-recognized certificate on course completion' },
     { icon: '👩‍🏫', title: 'Expert Mentors', desc: 'Learn from top working makeup artists of Indore' },
@@ -726,7 +725,7 @@ export default function App() {
             href="#enroll"
             className="cta-btn px-5 py-2.5 rounded-full text-white text-sm font-semibold"
           >
-            Free Counselling
+            Free Demo Class
           </a>
         </div>
       </header>
@@ -753,20 +752,17 @@ export default function App() {
 
               {/* Main headline */}
               <h1 className="font-display text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-tight text-gray-900 mb-4">
-                Do You Dream of Becoming{' '}
-                <span className="typewriter-cursor text-gradient-rose font-extrabold block mt-1 min-h-[3.2em] sm:min-h-[2.4em] lg:min-h-[2.4em]">
-                  {dynamicText}
-                </span>
+                Become a Certified Makeup Artist & Start Your Career in 30 Days
               </h1>
 
-              <p className="text-gray-600 text-lg mb-6 leading-relaxed max-w-lg">
-                Join <strong className="text-rose-700">Indore's Most Trusted Makeup Academy</strong> and turn your passion into a thriving career — with real skills, real clients, real income.
-              </p>
+              <div className="typewriter-cursor text-rose-700 text-lg md:text-xl mb-6 leading-relaxed font-bold min-h-[2.8em] sm:min-h-[1.4em]">
+                {dynamicText}
+              </div>
 
               {/* Benefit badges */}
               <div className="flex flex-wrap gap-3 mb-8">
                 {[
-                  { icon: '🎓', text: 'FREE Counselling' },
+                  { icon: '🎓', text: 'FREE Demo Class' },
                   { icon: '🎪', text: 'FREE Workshop' },
                   { icon: '📜', text: 'Certified Course' },
                   { icon: '💼', text: 'Placement Help' },
@@ -963,7 +959,7 @@ export default function App() {
               <p className="text-sm text-gray-600">
                 🎁 <strong className="text-rose-700">Register Now</strong> and get a{' '}
                 <strong className="text-green-600">FREE Draping Class</strong> absolutely free!{' '}
-                <a href="#enroll" className="text-rose-600 font-bold underline">Book your FREE counselling →</a>
+                <a href="#enroll" className="text-rose-600 font-bold underline">Book your FREE Demo Class →</a>
               </p>
             </div>
           </div>
@@ -1106,7 +1102,7 @@ export default function App() {
                 href="tel:7024824574"
                 className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-400 transition-colors text-white font-bold py-4 rounded-2xl text-base"
               >
-                📞 Call Now for FREE Counselling
+                📞 Call Now for FREE Demo Class
               </a>
               <a
                 href="https://wa.me/917024824574?text=Hi! I am interested in learning makeup at Four Sisters Academy. Please share details."
@@ -1141,7 +1137,7 @@ export default function App() {
       {/* ── FOOTER ────────────────────────────────────── */}
       <footer className="bg-black text-gray-400 py-8 text-center text-sm">
         <div className="flex items-center justify-center gap-2 mb-2">
-          <span className="text-2xl">👯‍♀️</span>
+          {/* <span className="text-2xl">👯‍♀️</span> */}
           <span className="font-display font-bold text-white text-lg">Four Sisters Makeup Academy</span>
         </div>
         <p className="text-xs">AB Rd, LIG Square, Anoop Nagar, Indore, MP 452011 · +91 7024 824 574</p>
@@ -1171,7 +1167,7 @@ export default function App() {
             📞 Call Now
           </a>
           <a href="#enroll" className="flex-1 flex items-center justify-center gap-2 cta-btn text-white py-3 rounded-xl font-semibold text-sm">
-            Free Counselling
+            Free Demo Class
           </a>
         </div>
       </div>
