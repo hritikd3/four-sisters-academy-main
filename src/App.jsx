@@ -121,7 +121,7 @@ function FloatingPetals() {
 
 // ─── Enquiry Form ──────────────────────────────────────────────────────────────
 function EnquiryForm({ variant = 'hero' }) {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', age: '', profile: '', course: '' })
+  const [form, setForm] = useState({ name: '', email: '', phone: '' })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -138,7 +138,12 @@ function EnquiryForm({ variant = 'hero' }) {
       const ip = await Promise.race([ipPromise, timeoutPromise])
 
       const formData = new URLSearchParams()
-      Object.entries(form).forEach(([key, val]) => formData.append(key, val))
+      formData.append('name', form.name)
+      formData.append('email', form.email)
+      formData.append('phone', form.phone)
+      formData.append('age', '')
+      formData.append('profile', '')
+      formData.append('course', form.course || '')
       formData.append('ip', ip)
 
       await fetch(SCRIPT_URL, {
@@ -196,42 +201,6 @@ function EnquiryForm({ variant = 'hero' }) {
         value={form.email} onChange={handleChange}
         className="form-input px-4 py-3 rounded-xl bg-white text-gray-800 placeholder-gray-400 text-sm"
       />
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <select
-          name="age" required value={form.age} onChange={handleChange}
-          className="form-input px-4 py-3 rounded-xl bg-white text-gray-700 text-sm cursor-pointer"
-        >
-          <option value="">Age Group *</option>
-          <option>16 – 20 years</option>
-          <option>21 – 25 years</option>
-          <option>26 – 30 years</option>
-          <option>31 – 35 years</option>
-          <option>35+ years</option>
-        </select>
-        <select
-          name="profile" required value={form.profile} onChange={handleChange}
-          className="form-input px-4 py-3 rounded-xl bg-white text-gray-700 text-sm cursor-pointer"
-        >
-          <option value="">Current Profile *</option>
-          <option>Student</option>
-          <option>Homemaker</option>
-          <option>Working Professional</option>
-          <option>Freelancer</option>
-          <option>Makeup Enthusiast</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <select
-        name="course" required value={form.course} onChange={handleChange}
-        className="form-input px-4 py-3 rounded-xl bg-white text-gray-700 text-sm cursor-pointer"
-      >
-        <option value="">Interested In *</option>
-        <option>Bridal Makeup Artist Course</option>
-        <option>Professional Beauty Salon Course</option>
-        <option>Nail Art & Extension Course</option>
-        <option>All Courses Bundle</option>
-        <option>Just Exploring</option>
-      </select>
       <button
         type="submit"
         disabled={loading}
@@ -254,7 +223,7 @@ function EnquiryForm({ variant = 'hero' }) {
 
 // ─── Masterclass Modal ────────────────────────────────────────────────────────
 function MasterclassModal({ onClose }) {
-  const [form, setForm] = useState({ name: '', phone: '', email: '', age: '', profile: '' })
+  const [form, setForm] = useState({ name: '', phone: '', email: '' })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -270,7 +239,11 @@ function MasterclassModal({ onClose }) {
       const ip = await Promise.race([ipPromise, timeoutPromise])
 
       const formData = new URLSearchParams()
-      Object.entries(form).forEach(([key, val]) => formData.append(key, val))
+      formData.append('name', form.name)
+      formData.append('email', form.email)
+      formData.append('phone', form.phone)
+      formData.append('age', '')
+      formData.append('profile', '')
       formData.append('course', 'Masterclass')
       formData.append('ip', ip)
 
@@ -413,36 +386,22 @@ function MasterclassModal({ onClose }) {
 
               {/* Form */}
               <form onSubmit={handleSubmit} className="space-y-3">
-                <div className="grid grid-cols-2 gap-3">
-                  <input type="text" name="name" required placeholder="Your Full Name *"
-                    value={form.name} onChange={handleChange}
-                    className="form-input px-4 py-3 rounded-xl bg-white text-gray-800 placeholder-gray-400 text-sm" />
-                  <input type="tel" name="phone" required placeholder="WhatsApp Number *"
+                <input
+                  type="text" name="name" required placeholder="Your Full Name *"
+                  value={form.name} onChange={handleChange}
+                  className="form-input px-4 py-3 rounded-xl bg-white text-gray-800 placeholder-gray-400 text-sm w-full"
+                />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <input
+                    type="tel" name="phone" required placeholder="Phone Number *"
                     value={form.phone} onChange={handleChange}
-                    className="form-input px-4 py-3 rounded-xl bg-white text-gray-800 placeholder-gray-400 text-sm" />
-                </div>
-                <input type="email" name="email" placeholder="Email Address (optional)"
-                  value={form.email} onChange={handleChange}
-                  className="form-input px-4 py-3 rounded-xl bg-white text-gray-800 placeholder-gray-400 text-sm" />
-                <div className="grid grid-cols-2 gap-3">
-                  <select name="age" required value={form.age} onChange={handleChange}
-                    className="form-input px-4 py-3 rounded-xl bg-white text-gray-700 text-sm cursor-pointer">
-                    <option value="">Age Group *</option>
-                    <option>16 – 20 years</option>
-                    <option>21 – 25 years</option>
-                    <option>26 – 30 years</option>
-                    <option>31 – 35 years</option>
-                    <option>35+ years</option>
-                  </select>
-                  <select name="profile" required value={form.profile} onChange={handleChange}
-                    className="form-input px-4 py-3 rounded-xl bg-white text-gray-700 text-sm cursor-pointer">
-                    <option value="">Current Profile *</option>
-                    <option>Student</option>
-                    <option>Homemaker</option>
-                    <option>Working Professional</option>
-                    <option>Makeup Enthusiast</option>
-                    <option>Other</option>
-                  </select>
+                    className="form-input px-4 py-3 rounded-xl bg-white text-gray-800 placeholder-gray-400 text-sm"
+                  />
+                  <input
+                    type="email" name="email" required placeholder="Email Address *"
+                    value={form.email} onChange={handleChange}
+                    className="form-input px-4 py-3 rounded-xl bg-white text-gray-800 placeholder-gray-400 text-sm"
+                  />
                 </div>
                 <button type="submit" disabled={loading}
                   className="cta-btn w-full py-4 rounded-xl text-white font-extrabold text-base tracking-wide disabled:opacity-70">
